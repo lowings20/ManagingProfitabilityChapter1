@@ -80,6 +80,59 @@
       </div>
     </div>
 
+    <!-- Break-Even Challenge -->
+    <div class="challenge-card">
+      <h2>Calculate Break-Even Volume</h2>
+      <p class="challenge-subtitle">Using the formula above, calculate the break-even volume for each production option</p>
+
+      <div class="challenge-grid">
+        <div class="challenge-item copacker">
+          <div class="challenge-header">
+            <span class="option-dot copacker"></span>
+            <span class="option-name">Co-Packer</span>
+          </div>
+          <div class="challenge-details">
+            <span>Fixed: $450,000</span>
+            <span>VC: $2.70/unit</span>
+          </div>
+          <div class="challenge-input-wrap">
+            <input type="number" id="answer-copacker" placeholder="Enter units" oninput="checkAnswer('copacker')">
+            <span class="answer-status" id="status-copacker"></span>
+          </div>
+        </div>
+
+        <div class="challenge-item retrofit">
+          <div class="challenge-header">
+            <span class="option-dot retrofit"></span>
+            <span class="option-name">Retrofit</span>
+          </div>
+          <div class="challenge-details">
+            <span>Fixed: $793,000</span>
+            <span>VC: $2.10/unit</span>
+          </div>
+          <div class="challenge-input-wrap">
+            <input type="number" id="answer-retrofit" placeholder="Enter units" oninput="checkAnswer('retrofit')">
+            <span class="answer-status" id="status-retrofit"></span>
+          </div>
+        </div>
+
+        <div class="challenge-item newplant">
+          <div class="challenge-header">
+            <span class="option-dot newplant"></span>
+            <span class="option-name">New Plant</span>
+          </div>
+          <div class="challenge-details">
+            <span>Fixed: $1,203,000</span>
+            <span>VC: $1.10/unit</span>
+          </div>
+          <div class="challenge-input-wrap">
+            <input type="number" id="answer-newplant" placeholder="Enter units" oninput="checkAnswer('newplant')">
+            <span class="answer-status" id="status-newplant"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Info Modal -->
     <div class="modal" id="info-modal" onclick="closeInfo(event)">
       <div class="modal-content">

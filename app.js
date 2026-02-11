@@ -84,3 +84,36 @@ document.addEventListener('keydown', (e) => {
     closeInfo();
   }
 });
+
+// Break-even challenge answers
+const correctAnswers = {
+  copacker: 346154,
+  retrofit: 417368,
+  newplant: 414828
+};
+
+// Check answer for challenge
+function checkAnswer(option) {
+  const input = document.getElementById(`answer-${option}`);
+  const status = document.getElementById(`status-${option}`);
+  const value = parseInt(input.value);
+
+  // Reset classes
+  input.classList.remove('correct', 'incorrect');
+  status.classList.remove('correct', 'incorrect');
+
+  if (!input.value || input.value === '') {
+    // Empty - no status
+    return;
+  }
+
+  if (value === correctAnswers[option]) {
+    // Correct
+    input.classList.add('correct');
+    status.classList.add('correct');
+  } else {
+    // Incorrect
+    input.classList.add('incorrect');
+    status.classList.add('incorrect');
+  }
+}
