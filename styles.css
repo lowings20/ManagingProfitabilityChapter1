@@ -79,6 +79,7 @@ header h1 {
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 4px 16px rgba(14, 0, 57, 0.08);
+  overflow: hidden;
 }
 
 .calc-top-row {
@@ -391,6 +392,7 @@ header h1 {
   padding: 24px;
   margin-top: 20px;
   box-shadow: 0 4px 16px rgba(14, 0, 57, 0.08);
+  overflow: hidden;
 }
 
 .challenge-card h2 {
@@ -408,10 +410,12 @@ header h1 {
 .challenge-grid {
   display: flex;
   gap: 12px;
+  width: 100%;
 }
 
 .challenge-item {
   flex: 1;
+  min-width: 0;
   padding: 16px;
   border-radius: 10px;
   background: var(--color-gray-100);
