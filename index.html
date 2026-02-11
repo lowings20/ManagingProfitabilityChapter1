@@ -17,65 +17,84 @@
     </header>
 
     <div class="calculator-card">
-      <!-- Row 1: Fixed Costs -->
-      <div class="calc-row">
-        <div class="row-label">
-          <span>Fixed Costs</span>
-          <button class="info-btn" onclick="showInfo('fixed')">?</button>
+      <div class="calc-inputs">
+        <!-- Row 1: Fixed Costs -->
+        <div class="calc-row">
+          <div class="row-label">
+            <span>Fixed Costs</span>
+            <button class="info-btn" onclick="showInfo('fixed')">?</button>
+          </div>
+          <div class="row-input">
+            <span class="currency-prefix">$</span>
+            <input type="number" id="fixed-costs" value="450000" onchange="calculate()" oninput="calculate()">
+          </div>
         </div>
-        <div class="row-input">
-          <span class="currency-prefix">$</span>
-          <input type="number" id="fixed-costs" value="450000" onchange="calculate()" oninput="calculate()">
+
+        <!-- Row 2: Selling Price -->
+        <div class="calc-row">
+          <div class="row-label">
+            <span>Selling Price per Unit</span>
+            <button class="info-btn" onclick="showInfo('price')">?</button>
+          </div>
+          <div class="row-input">
+            <span class="currency-prefix">$</span>
+            <input type="number" id="selling-price" value="4.00" step="0.01" onchange="calculate()" oninput="calculate()">
+          </div>
+        </div>
+
+        <!-- Row 3: Variable Cost -->
+        <div class="calc-row">
+          <div class="row-label">
+            <span>Variable Cost per Unit</span>
+            <button class="info-btn" onclick="showInfo('variable')">?</button>
+          </div>
+          <div class="row-input">
+            <span class="currency-prefix">$</span>
+            <input type="number" id="variable-cost" value="2.70" step="0.01" onchange="calculate()" oninput="calculate()">
+          </div>
+        </div>
+
+        <div class="calc-divider"></div>
+
+        <!-- Row 4: Contribution Margin (Calculated) -->
+        <div class="calc-row calculated">
+          <div class="row-label">
+            <span>Contribution Margin</span>
+            <button class="info-btn" onclick="showInfo('margin')">?</button>
+          </div>
+          <div class="row-output">
+            <span id="contribution-margin">$1.30</span>
+            <span class="per-unit">per unit</span>
+          </div>
+        </div>
+
+        <!-- Row 5: Break-Even Volume (Calculated) -->
+        <div class="calc-row calculated result">
+          <div class="row-label">
+            <span>Break-Even Volume</span>
+            <button class="info-btn" onclick="showInfo('breakeven')">?</button>
+          </div>
+          <div class="row-output">
+            <span id="breakeven-volume">346,154</span>
+            <span class="per-unit">units</span>
+          </div>
         </div>
       </div>
 
-      <!-- Row 2: Selling Price -->
-      <div class="calc-row">
-        <div class="row-label">
-          <span>Selling Price per Unit</span>
-          <button class="info-btn" onclick="showInfo('price')">?</button>
-        </div>
-        <div class="row-input">
-          <span class="currency-prefix">$</span>
-          <input type="number" id="selling-price" value="4.00" step="0.01" onchange="calculate()" oninput="calculate()">
-        </div>
-      </div>
-
-      <!-- Row 3: Variable Cost -->
-      <div class="calc-row">
-        <div class="row-label">
-          <span>Variable Cost per Unit</span>
-          <button class="info-btn" onclick="showInfo('variable')">?</button>
-        </div>
-        <div class="row-input">
-          <span class="currency-prefix">$</span>
-          <input type="number" id="variable-cost" value="2.70" step="0.01" onchange="calculate()" oninput="calculate()">
-        </div>
-      </div>
-
-      <div class="calc-divider"></div>
-
-      <!-- Row 4: Contribution Margin (Calculated) -->
-      <div class="calc-row calculated">
-        <div class="row-label">
-          <span>Contribution Margin</span>
-          <button class="info-btn" onclick="showInfo('margin')">?</button>
-        </div>
-        <div class="row-output">
-          <span id="contribution-margin">$1.20</span>
-          <span class="per-unit">per unit</span>
-        </div>
-      </div>
-
-      <!-- Row 5: Break-Even Volume (Calculated) -->
-      <div class="calc-row calculated result">
-        <div class="row-label">
-          <span>Break-Even Volume</span>
-          <button class="info-btn" onclick="showInfo('breakeven')">?</button>
-        </div>
-        <div class="row-output">
-          <span id="breakeven-volume">375,000</span>
-          <span class="per-unit">units</span>
+      <div class="calc-formula">
+        <div class="formula-title">Break-Even Formula</div>
+        <div class="formula-visual">
+          <div class="formula-fraction">
+            <div class="formula-numerator">
+              Fixed Costs: <span class="formula-value" id="formula-fixed">$450,000</span>
+            </div>
+            <div class="formula-denominator">
+              Price <span class="formula-value" id="formula-price">$4.00</span> − VC <span class="formula-value" id="formula-vc">$2.70</span>
+            </div>
+          </div>
+          <div class="formula-equals">=</div>
+          <div class="formula-result" id="formula-result">346,154</div>
+          <div class="formula-result-label">units to break even</div>
         </div>
       </div>
     </div>
@@ -96,7 +115,7 @@
             <span>VC: $2.70/unit</span>
           </div>
           <div class="challenge-input-wrap">
-            <input type="number" id="answer-copacker" placeholder="Enter units" oninput="checkAnswer('copacker')">
+            <input type="text" id="answer-copacker" placeholder="Enter units" oninput="checkAnswer('copacker')">
             <span class="answer-status" id="status-copacker"></span>
           </div>
         </div>
@@ -111,7 +130,7 @@
             <span>VC: $2.10/unit</span>
           </div>
           <div class="challenge-input-wrap">
-            <input type="number" id="answer-retrofit" placeholder="Enter units" oninput="checkAnswer('retrofit')">
+            <input type="text" id="answer-retrofit" placeholder="Enter units" oninput="checkAnswer('retrofit')">
             <span class="answer-status" id="status-retrofit"></span>
           </div>
         </div>
@@ -126,7 +145,7 @@
             <span>VC: $1.10/unit</span>
           </div>
           <div class="challenge-input-wrap">
-            <input type="number" id="answer-newplant" placeholder="Enter units" oninput="checkAnswer('newplant')">
+            <input type="text" id="answer-newplant" placeholder="Enter units" oninput="checkAnswer('newplant')">
             <span class="answer-status" id="status-newplant"></span>
           </div>
         </div>

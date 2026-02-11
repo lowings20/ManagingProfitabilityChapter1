@@ -54,11 +54,18 @@ function calculate() {
   const resultRow = document.querySelector('.calc-row.result');
   if (isError) {
     document.getElementById('breakeven-volume').textContent = 'Price must exceed variable cost';
+    document.getElementById('formula-result').textContent = '—';
     resultRow.classList.add('error');
   } else {
     document.getElementById('breakeven-volume').textContent = breakevenVolume.toLocaleString();
+    document.getElementById('formula-result').textContent = breakevenVolume.toLocaleString();
     resultRow.classList.remove('error');
   }
+
+  // Update formula visualization
+  document.getElementById('formula-fixed').textContent = '$' + fixedCosts.toLocaleString();
+  document.getElementById('formula-price').textContent = '$' + sellingPrice.toFixed(2);
+  document.getElementById('formula-vc').textContent = '$' + variableCost.toFixed(2);
 }
 
 // Show info modal
@@ -92,20 +99,36 @@ const correctAnswers = {
   newplant: 414828
 };
 
+// Format number with commas
+function formatWithCommas(value) {
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+// Parse number removing commas
+function parseNumber(str) {
+  return parseInt(str.replace(/,/g, '')) || 0;
+}
+
 // Check answer for challenge
 function checkAnswer(option) {
   const input = document.getElementById(`answer-${option}`);
   const status = document.getElementById(`status-${option}`);
-  const value = parseInt(input.value);
+
+  // Get raw value and parse it
+  let rawValue = input.value.replace(/,/g, '');
+  const value = parseInt(rawValue) || 0;
 
   // Reset classes
   input.classList.remove('correct', 'incorrect');
   status.classList.remove('correct', 'incorrect');
 
-  if (!input.value || input.value === '') {
+  if (!rawValue || rawValue === '') {
     // Empty - no status
     return;
   }
+
+  // Format with commas
+  input.value = formatWithCommas(value);
 
   if (value === correctAnswers[option]) {
     // Correct
