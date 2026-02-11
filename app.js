@@ -54,11 +54,9 @@ function calculate() {
   const resultRow = document.querySelector('.calc-row.result');
   if (isError) {
     document.getElementById('breakeven-volume').textContent = 'Price must exceed variable cost';
-    document.getElementById('formula-result').textContent = '—';
     resultRow.classList.add('error');
   } else {
     document.getElementById('breakeven-volume').textContent = breakevenVolume.toLocaleString();
-    document.getElementById('formula-result').textContent = breakevenVolume.toLocaleString();
     resultRow.classList.remove('error');
   }
 

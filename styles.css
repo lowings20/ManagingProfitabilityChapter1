@@ -79,12 +79,28 @@ header h1 {
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 4px 16px rgba(14, 0, 57, 0.08);
+}
+
+.calc-top-row {
   display: flex;
-  gap: 32px;
+  gap: 24px;
 }
 
 .calc-inputs {
   flex: 1;
+}
+
+.calc-results {
+  margin-top: 8px;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-blue-700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
 }
 
 .calc-formula {
@@ -93,15 +109,16 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--color-gray-100);
+  background: var(--color-gold-200);
   border-radius: 12px;
   padding: 24px;
+  border: 2px dashed var(--color-gold-400);
 }
 
 .formula-title {
   font-size: 13px;
   font-weight: 600;
-  color: var(--color-gray-600);
+  color: var(--color-gold-800);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 16px;
@@ -120,7 +137,7 @@ header h1 {
 
 .formula-numerator,
 .formula-denominator {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-gray-700);
   padding: 8px 16px;
@@ -138,27 +155,6 @@ header h1 {
 .formula-denominator .formula-value {
   color: var(--color-blue-800);
   font-weight: 700;
-}
-
-.formula-equals {
-  font-size: 24px;
-  color: var(--color-gray-500);
-  margin: 16px 0;
-}
-
-.formula-result {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--color-gold-600);
-  background: var(--color-blue-800);
-  padding: 12px 24px;
-  border-radius: 8px;
-}
-
-.formula-result-label {
-  font-size: 13px;
-  color: var(--color-gray-500);
-  margin-top: 8px;
 }
 
 /* Calculator Rows */
@@ -261,9 +257,14 @@ header h1 {
 /* Calculated Rows */
 .calc-row.calculated {
   background: var(--color-blue-200);
-  margin: 0 -24px;
   padding: 16px 24px;
   border-bottom: none;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.calc-row.calculated:last-child {
+  margin-bottom: 0;
 }
 
 .calc-row.calculated .row-label span {
@@ -522,16 +523,12 @@ header h1 {
 
 /* Responsive */
 @media (max-width: 700px) {
-  .calculator-card {
+  .calc-top-row {
     flex-direction: column;
   }
 
   .calc-formula {
     padding: 20px;
-  }
-
-  .formula-result {
-    font-size: 24px;
   }
 }
 

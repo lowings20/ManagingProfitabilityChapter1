@@ -17,45 +17,62 @@
     </header>
 
     <div class="calculator-card">
-      <div class="calc-inputs">
-        <!-- Row 1: Fixed Costs -->
-        <div class="calc-row">
-          <div class="row-label">
-            <span>Fixed Costs</span>
-            <button class="info-btn" onclick="showInfo('fixed')">?</button>
+      <div class="calc-top-row">
+        <div class="calc-inputs">
+          <div class="step-label">Step 1: Input costs to calculate breakeven</div>
+          <!-- Row 1: Fixed Costs -->
+          <div class="calc-row">
+            <div class="row-label">
+              <span>Fixed Costs</span>
+              <button class="info-btn" onclick="showInfo('fixed')">?</button>
+            </div>
+            <div class="row-input">
+              <span class="currency-prefix">$</span>
+              <input type="number" id="fixed-costs" value="450000" onchange="calculate()" oninput="calculate()">
+            </div>
           </div>
-          <div class="row-input">
-            <span class="currency-prefix">$</span>
-            <input type="number" id="fixed-costs" value="450000" onchange="calculate()" oninput="calculate()">
+
+          <!-- Row 2: Selling Price -->
+          <div class="calc-row">
+            <div class="row-label">
+              <span>Selling Price per Unit</span>
+              <button class="info-btn" onclick="showInfo('price')">?</button>
+            </div>
+            <div class="row-input">
+              <span class="currency-prefix">$</span>
+              <input type="number" id="selling-price" value="4.00" step="0.01" onchange="calculate()" oninput="calculate()">
+            </div>
+          </div>
+
+          <!-- Row 3: Variable Cost -->
+          <div class="calc-row">
+            <div class="row-label">
+              <span>Variable Cost per Unit</span>
+              <button class="info-btn" onclick="showInfo('variable')">?</button>
+            </div>
+            <div class="row-input">
+              <span class="currency-prefix">$</span>
+              <input type="number" id="variable-cost" value="2.70" step="0.01" onchange="calculate()" oninput="calculate()">
+            </div>
           </div>
         </div>
 
-        <!-- Row 2: Selling Price -->
-        <div class="calc-row">
-          <div class="row-label">
-            <span>Selling Price per Unit</span>
-            <button class="info-btn" onclick="showInfo('price')">?</button>
-          </div>
-          <div class="row-input">
-            <span class="currency-prefix">$</span>
-            <input type="number" id="selling-price" value="4.00" step="0.01" onchange="calculate()" oninput="calculate()">
-          </div>
-        </div>
-
-        <!-- Row 3: Variable Cost -->
-        <div class="calc-row">
-          <div class="row-label">
-            <span>Variable Cost per Unit</span>
-            <button class="info-btn" onclick="showInfo('variable')">?</button>
-          </div>
-          <div class="row-input">
-            <span class="currency-prefix">$</span>
-            <input type="number" id="variable-cost" value="2.70" step="0.01" onchange="calculate()" oninput="calculate()">
+        <div class="calc-formula">
+          <div class="formula-title">Look under the hood</div>
+          <div class="formula-visual">
+            <div class="formula-fraction">
+              <div class="formula-numerator">
+                Fixed Costs: <span class="formula-value" id="formula-fixed">$450,000</span>
+              </div>
+              <div class="formula-denominator">
+                Price <span class="formula-value" id="formula-price">$4.00</span> − VC <span class="formula-value" id="formula-vc">$2.70</span>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="calc-divider"></div>
-
+      <div class="calc-results">
         <!-- Row 4: Contribution Margin (Calculated) -->
         <div class="calc-row calculated">
           <div class="row-label">
@@ -80,27 +97,11 @@
           </div>
         </div>
       </div>
-
-      <div class="calc-formula">
-        <div class="formula-title">Break-Even Formula</div>
-        <div class="formula-visual">
-          <div class="formula-fraction">
-            <div class="formula-numerator">
-              Fixed Costs: <span class="formula-value" id="formula-fixed">$450,000</span>
-            </div>
-            <div class="formula-denominator">
-              Price <span class="formula-value" id="formula-price">$4.00</span> − VC <span class="formula-value" id="formula-vc">$2.70</span>
-            </div>
-          </div>
-          <div class="formula-equals">=</div>
-          <div class="formula-result" id="formula-result">346,154</div>
-          <div class="formula-result-label">units to break even</div>
-        </div>
-      </div>
     </div>
 
     <!-- Break-Even Challenge -->
     <div class="challenge-card">
+      <div class="step-label">Step 2: Capture the breakeven volume for each plant</div>
       <h2>Calculate Break-Even Volume</h2>
       <p class="challenge-subtitle">Using the formula above, calculate the break-even volume for each production option</p>
 
